@@ -14,6 +14,6 @@ for name, numbers in favorite_numbers.items():
     number = [str(number) for number in numbers]
 
     if len(numbers) == 1:
-        print(f"{name.title()}'s' favorite number is {", ".join(number)}.")
+        print(f"{name.title()}'s favorite number is {", ".join(number)}.")
     else:
-        print(f"{name.title()}'s' favorite numbers are: {", ".join(number)}.")
+        print(f"{name.title()}'s favorite numbers are: {", ".join(number)}.")
