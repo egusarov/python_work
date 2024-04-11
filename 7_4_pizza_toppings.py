@@ -2,8 +2,8 @@
 # pizza toppings until they enter a 'quit' value. As they enter each topping, print
 # a message saying you’ll add that topping to their pizza.
 
-prompt = ("\nPlease enter the pizza toppings you'd like to add:")
-prompt += ("\n(Please enter 'quit' when you finished.) ")
+prompt = "\nPlease enter the pizza toppings you'd like to add:"
+prompt += "\n(Please enter 'quit' when you finished.) "
 
 pizza_toppings = ""
 
