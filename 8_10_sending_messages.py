@@ -27,5 +27,6 @@ sent_messages = []
 send_messages(messages, sent_messages)
 show_messages(sent_messages)
 
-# print(messages)
-# print(sent_messages)
+print("\nCheck that the messages were moved correctly")
+print(f"Original list: {messages}")
+print(f"New list: {sent_messages}")
