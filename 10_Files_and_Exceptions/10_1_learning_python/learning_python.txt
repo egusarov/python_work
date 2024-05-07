@@ -1,0 +1,3 @@
+In Python you can write your own classes.
+In Python you can store information in a class using attributes.
+In Python you can work with files.
