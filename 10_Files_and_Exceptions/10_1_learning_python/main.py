@@ -14,6 +14,5 @@ print("\nPrinting the contents once by reading in the entire file:")
 print(content)
 
 print("\nPrinting the contents by storing the lines in a list and then looping over each line:")
-lines = content.splitlines()
-for line in lines:
+for line in content.splitlines():
     print(line)

@@ -14,6 +14,5 @@ from pathlib import Path
 path = Path('/DEV/python_work/10_Files_and_Exceptions/10_2_learning_c/learning_python.txt')
 content = path.read_text()
 
-lines = content.splitlines()
-for line in lines:
+for line in content.splitlines():
     print(line.replace('Python', 'C'))
