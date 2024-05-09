@@ -18,7 +18,7 @@ for file in files:
     path = Path(file)
     try:
         content = path.read_text()
-    except:
+    except FileNotFoundError:
         print(f"Sorry, the file {path} does not exist.")
     else:
         print(content)
