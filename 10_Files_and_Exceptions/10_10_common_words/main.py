@@ -18,20 +18,25 @@
 from pathlib import Path
 
 
+def find_words(books, word):
+    """Search a word in a file(s) and show how many times it appears."""
+    for book in books:
+        path = Path(book)
+        try:
+            content = path.read_text(encoding='utf-8')
+        except FileNotFoundError:
+            print(f"Sorry, the file {book.removeprefix(file_path)} does not exist.")
+        else:
+            print(f"\nReading a book {book.removeprefix(file_path)} ...")
+            print("Determining how many times searching word appears in the text ...")
+
+            res = content.lower().count(word)
+            print(f"The word {word} appears in the text {res} times.")
+        
 books = ['/DEV/python_work/10_Files_and_Exceptions/10_10_common_words/Moby-Dick.txt',
          '/DEV/python_work/10_Files_and_Exceptions/10_10_common_words/Tarzan of the Apes.txt',
         ]
 file_path = '/DEV/python_work/10_Files_and_Exceptions/10_10_common_words/'
 
-for book in books:
-    path = Path(book)
-    try:
-        content = path.read_text(encoding='utf-8')
-    except FileNotFoundError:
-        print(f"Sorry, the file {path} does not exist.")
-    else:
-        print(f"\nReading a book {book.removeprefix(file_path)} ...")
-        print("Determining how many times the word 'the' appears in the text ...")
 
-        res = content.lower().count('the ')
-        print(f"The word 'the' appears in the text {res} times.")
+find_words(books, 'the ')
