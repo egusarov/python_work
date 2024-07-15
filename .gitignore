@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 test.py
-wheather_data/
+weather_data/
