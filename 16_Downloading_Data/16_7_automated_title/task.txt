@@ -1,0 +1,3 @@
+16-7. Automated Title: In this section, we used the generic title Global 
+Earthquakes. Instead, you can use the title for the dataset in the metadata part
+of the GeoJSON file. Pull this value and assign it to the variable title.
