@@ -162,3 +162,4 @@ cython_debug/
 test.py
 weather_data/
 eq_data/
+temp/
