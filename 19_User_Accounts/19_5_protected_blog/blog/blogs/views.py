@@ -19,9 +19,8 @@ def blogs(request):
 def blog(request, blog_id):
     """Page to view an individual blog, and all its posts."""
     blog = Blog.objects.get(id=blog_id)
-    # Make sure the topic belongs to the current user
-
     posts = blog.blogpost_set.all()
+
     context = {'blog': blog, 'posts': posts}
     return render(request, 'blogs/blog.html', context)
 
@@ -35,9 +34,7 @@ def new_blog(request):
         # POST data submitted; process data
         form = BlogForm(data=request.POST)
         if form.is_valid():
-            new_blog = form.save(commit=False)
-            new_blog.owner = request.user
-            new_blog.save()
+            form.save()
             return redirect('blogs:blogs')
 
     # Display a blank or invalid form
@@ -48,6 +45,7 @@ def new_blog(request):
 def new_post(request, blog_id):
     """Page to create a new post."""
     blog = Blog.objects.get(id=blog_id)
+    check_blog_owner(blog, request.user)
 
     if request.method != 'POST':
         # No data submitted; create a blank form
@@ -70,8 +68,7 @@ def edit_post(request, post_id):
     """Page to edit an existing post."""
     post = BlogPost.objects.get(id=post_id)
     blog = post.blog
-    if blog.owner != request.user:
-        raise Http404
+    check_blog_owner(blog, request.user)
 
     if request.method != 'POST':
         # Initial request; pre-fill form with the current entry
@@ -85,3 +82,12 @@ def edit_post(request, post_id):
 
     context = {'post': post, 'blog': blog, 'form': form}
     return render(request, 'blogs/edit_post.html', context)
+
+def check_blog_owner(blog, user):
+    """Make sure the currently logged-in user owns the blog that's 
+    being requested.
+
+    Raise Http404 error if the user does not own the blog.
+    """
+    if blog.owner != user:
+        raise Http404
